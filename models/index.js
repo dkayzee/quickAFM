@@ -29,15 +29,18 @@ const User = db.define('user', {
 })
 
 const Group = db.define('group', {
-    name: Sequelize.STRING
+    name: Sequelize.STRING(28)
 })
 
 const Board = db.define('board', {
-    name: Sequelize.STRING
+    name: Sequelize.STRING(28)
 })
 
 const Card = db.define('card', {
-    name: Sequelize.STRING
+    text: {
+        type: Sequelize.STRING,
+        allowNull: false
+    }
 })
 
 User.belongsToMany(Group, {through: 'user_group_xref',

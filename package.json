@@ -1,8 +1,10 @@
 {
   "name": "quick_afm",
   "version": "0.1.0",
+  "proxy": "http://localhost:3001",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
     "concurrently": "^4.1.0",
     "express": "^4.16.4",
     "pg": "^7.8.1",
@@ -19,7 +21,7 @@
     "eject": "react-scripts eject",
     "db:init": "dropdb --if-exists quickAFM_db && createdb quickAFM_db",
     "db:reset": "node ./scripts/resetDb",
-    "db:seed": "node ./scripts/seed",
+    "db:seed": "node ./scripts/seedDB",
     "server": "nodemon server.js",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"react-scripts start\""
   },
