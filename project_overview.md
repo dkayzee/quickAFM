@@ -9,7 +9,7 @@ You are **responsible** for scheduling time with your squad to seek approval for
 |  Day | Deliverable | Status
 |---|---| ---|
 |Day 1| Project Description | Complete
-|Day 2| Wireframes / Priority Matrix / Functional Components | Incomplete
+|Day 2| Wireframes / Priority Matrix / Functional Components | Complete
 |Day 3| Core Application Structure (HTML, CSS, etc.) | Incomplete
 |Day 4| Pseudocode / actual code | Incomplete
 |Day 5| Initial Clickable Model  | Incomplete
@@ -72,14 +72,18 @@ Based on the initial logic defined in the previous sections try and breakdown th
 
 Time frames are also key in the development cycle.  You have limited time to code all phases of the game.  Your estimates can then be used to evalute game possibilities based on time needed and the actual time you have before game must be submitted. It's always best to pad the time by a few hours so that you account for the unknown so add and additional hour or two to each component to play it safe.
 
-| Component | Priority | Estimated Time | Actual Time |
-| --- | :---: |  :---: | :---: |
-| Board Component | H | 3hrs|  |
-| Card Component | H | 3hrs|  |
-| Navigation | H | 2hrs | |
-| Search | H | 1.5hrs | |
-| Functionality and Animation Transition | H | 4hrs | |
-| Total | H | 13.5hrs|  | 
+| Task | Estimated Time | Actual Time | Status |
+| --- | :---: | :---: | :---: |
+| Create Model | .5hrs | .5hrs | Complete |
+| Create Routes | 4hrs | 2hrs | Working |
+| Create React Layout | .5hrs | .5hrs | Complete |
+| Board Component | 3hrs | .5hrs | Working |
+| Card Component | 3hrs| 1hr | Working |
+| User Login/Register | 1.5hrs | | |
+| Navigation | 2hrs | | |
+| Search | 1.5hrs | | |
+| Functionality and Animation Transition | 4hrs | | |
+| Total | 20hrs|  | 
 
 ## Helper Functions
 Helper functions should be generic enought that they can be reused in other applications. Use this section to document all helper functions that fall into this category.
@@ -115,8 +119,7 @@ function reverse(string) {
 | Have one Book component | Split that component into BookInfo and BookInteraction as the component grew too complicated | 
 
 ## Issues and Resolutions
- Use this section to list of all major issues encountered and their resolution.
 
-#### SAMPLE.....
-**ERROR**: app.js:34 Uncaught SyntaxError: Unexpected identifier                                
-**RESOLUTION**: Missing comma after first object in sources {} object
+**ERROR**: req.body for a post route kept coming back undefined.                             
+**RESOLUTION**: install body-parser.
+**COMMENT**: embarassing.
