@@ -1,4 +1,4 @@
-# Project Overview
+# Quick AFM (Affinity Map)
 
 ## Project Schedule
 
