@@ -36,7 +36,7 @@ const Board = db.define('board', {
     name: Sequelize.STRING(28)
 })
 
-const Card = db.define('card', {
+const PostIt = db.define('postit', {
     text: {
         type: Sequelize.STRING,
         allowNull: false
@@ -51,7 +51,7 @@ Group.belongsToMany(User, {through: 'user_group_xref',
 Group.hasMany(Board)
 Board.belongsTo(Group)
 
-Board.hasMany(Card)
-Card.belongsTo(Board)
+Board.hasMany(PostIt)
+PostIt.belongsTo(Board)
 
-module.exports = {db, User, Group, Board, Card}
+module.exports = {db, User, Group, Board, PostIt}
