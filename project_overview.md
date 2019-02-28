@@ -94,7 +94,7 @@ Helper functions should be generic enought that they can be reused in other appl
 
 | Function | Description | 
 | --- | :---: |  
-| Date | To help keep track of time | 
+| React addEventListener | Able to manipulate the React virtual DOM and add an event listener | 
 
 ## Additional Libraries
  Use this section to list all supporting libraries and thier role in the project. 
