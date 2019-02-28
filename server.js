@@ -1,7 +1,10 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const PORT = process.env.PORT || 3001
 
 const app = express()
+
+app.use(bodyParser.json())
 
 const {User, Group, Board, PostIt} = require ('./models')
 
@@ -12,8 +15,8 @@ app.get('/', (req, res) => {
 app.post('/postIt', async (req, res) => {
     try {
         console.log(req.body)
-        const postIt = await PostIt.create(req.body)
-        res.json(postIt)
+        const postit = await PostIt.create(req.body)
+        res.json(postit)
     } catch(err) {
         res.status(500).json({
             message: err.message

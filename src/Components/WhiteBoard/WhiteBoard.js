@@ -1,11 +1,13 @@
 import React from 'react'
 import './WhiteBoard.css'
 
+import PostIt from '..//PostIt/PostIt'
+
 const WhiteBoard = () => {
     return (
-        <canvas>
-
-        </canvas>
+        <div>
+            <PostIt />
+        </div>
     )
 }
 
