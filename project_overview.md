@@ -39,13 +39,18 @@ https://res.cloudinary.com/dpddrzhis/image/upload/v1551279100/Quick%20Map/Priori
 #### MVP 
 
 - Render a board component
-- Able to create sticky notes
-- Manipulate sticky notes by clicking and dragging
-- Team building tool
+- Render PostIts onto the Board component
+- User log-in/Register
+- Allow users to make group
+- Websocket to group CATEGORIZE
 
 #### PostMVP 
 
+- Make the board zoomable
+- Make the PostIts snap into position during CATEGORIZE
 - Delete a sticky note by dragging to a trash can
+- User Authenication
+- Session
 - Time box option
 - Long term management tool
 
@@ -55,8 +60,7 @@ https://res.cloudinary.com/dpddrzhis/image/upload/v1551279100/Quick%20Map/Hierar
 
 ## ERD
 
-https://res.cloudinary.com/dpddrzhis/image/upload/v1551217495/Quick%20Map/20190226_135552.jpg
-https://res.cloudinary.com/dpddrzhis/image/upload/v1551217495/Quick%20Map/20190226_135603.jpg
+https://res.cloudinary.com/dpddrzhis/image/upload/v1551323596/Quick%20Map/ERD.jpg
 
 ## UI Components
 
