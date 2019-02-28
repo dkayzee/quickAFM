@@ -1,7 +1,6 @@
-const express = require('express')
-const app = express()
+const app = require('express')();
 const http = require('http').createServer(app)
-const io = require('socket.io-client')(http)
+const io = require('socket.io')(http)
 const bodyParser = require('body-parser')
 const PORT = process.env.PORT || 3001
 
@@ -26,8 +25,14 @@ app.post('/postIt', async (req, res) => {
 })
 
 io.on('connection', (socket) => {
-    socket.on('status', (msg) => {
-        io.emit('status', msg)
+    console.log('A user connected')
+
+    socket.on('greet', (msg) => {
+        console.log(msg)
+        socket.emit('respond', {hello: 'welcome user'})
+    })
+    socket.on('disconnect', () => {
+        console.log('A user disconnected')
     })
 })
 

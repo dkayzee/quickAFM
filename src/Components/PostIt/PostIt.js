@@ -2,12 +2,17 @@ import React from 'react'
 import io from 'socket.io-client'
 import axios from 'axios'
 
-const socket = io('http://localhost:3001')
-
 class PostIt extends React.Component {
     
     componentDidMount(){
-        socket.on("status", (msg)=>{
+        const socket = io('http://localhost:3001')
+        console.log(socket)
+        socket.on("connect", ()=>{
+            console.log('connected to the socket')
+            socket.emit('greet',{message: 'hello server-side'})
+        })
+
+        socket.on('respond', (msg) => {
             console.log(msg)
         })
     }
@@ -15,11 +20,11 @@ class PostIt extends React.Component {
     post = () => {
 
         console.log('work')
-        let shit = {
-            text: "fuck"
+        let test = {
+            text: "work"
         }
 
-        axios.post('/PostIt', shit)
+        axios.post('/PostIt', test)
             .then(res => console.log(res.data))
     }
 
