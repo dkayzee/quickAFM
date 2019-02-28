@@ -1,8 +1,17 @@
 import React from 'react'
-
+import io from 'socket.io-client'
 import axios from 'axios'
 
+const socket = io('http://localhost:3001')
+
 class PostIt extends React.Component {
+    
+    componentDidMount(){
+        socket.on("status", (msg)=>{
+            console.log(msg)
+        })
+    }
+    
     post = () => {
 
         console.log('work')

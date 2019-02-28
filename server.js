@@ -1,8 +1,9 @@
 const express = require('express')
+const app = express()
+const http = require('http').createServer(app)
+const io = require('socket.io-client')(http)
 const bodyParser = require('body-parser')
 const PORT = process.env.PORT || 3001
-
-const app = express()
 
 app.use(bodyParser.json())
 
@@ -24,6 +25,12 @@ app.post('/postIt', async (req, res) => {
     }
 })
 
-app.listen(PORT, () => {
+io.on('connection', (socket) => {
+    socket.on('status', (msg) => {
+        io.emit('status', msg)
+    })
+})
+
+http.listen(PORT, () => {
     console.log(`Up and up on ${PORT}`)
 })
