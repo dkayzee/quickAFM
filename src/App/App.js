@@ -11,16 +11,25 @@ class App extends Component {
     loggedIn : false,
     display : 'home'
   }
+
+  changeDisplay = (display) => {
+    this.setState({display})
+  }
+
   render() {
     return (
       <div className="App">
         <main>
           <Switch>
             <Route path='/' exact render={props=>{
-              return <Home loggedIn={this.state.loggedIn} display={this.state.display}/>
+              return <Home loggedIn={this.state.loggedIn} display={this.state.display} changeDisplay={this.changeDisplay}/>
             }} />
-            <Route path='/sign-in' component={SignIn} />
-            <Route path='/register' component={Register} />
+            <Route path='/sign-in' exact render={props=>{
+              return <SignIn loggedIn={this.state.loggedIn} display={this.state.display} changeDisplay={this.changeDisplay}/>
+            }} />
+            <Route path='/register'  exact render={props=>{
+              return <Register loggedIn={this.state.loggedIn} display={this.state.display} changeDisplay={this.changeDisplay}/>
+            }} />
           </Switch>
         </main>
       </div>

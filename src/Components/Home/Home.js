@@ -5,12 +5,13 @@ import Header from '../Header/Header'
 class Home extends React.Component {
 
     componentDidMount(){
-        console.log(this.props)
+        this.props.changeDisplay("home")
     }
+
     render(){
         return(
             <div>
-                <Header />
+                <Header info={this.props}/>
             </div>
         )
     }
