@@ -27,7 +27,7 @@ app.post('/postIt', async (req, res) => {
 io.on('connection', (socket) => {
     console.log('A user connected')
 
-    socket.on('greet', (msg) => {
+    socket.on('user', (msg) => {
         console.log(msg)
         socket.emit('respond', {hello: 'welcome user'})
     })

@@ -3,13 +3,17 @@ import io from 'socket.io-client'
 import axios from 'axios'
 
 class PostIt extends React.Component {
+
+    state = {
+        user: 'daniel'
+    }
     
     componentDidMount(){
-        const socket = io('http://localhost:3001')
+        const socket = io()
         console.log(socket)
         socket.on("connect", ()=>{
             console.log('connected to the socket')
-            socket.emit('greet',{message: 'hello server-side'})
+            socket.emit('user',{user: this.state.user})
         })
 
         socket.on('respond', (msg) => {
