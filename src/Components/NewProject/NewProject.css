@@ -1,0 +1,9 @@
+.NewProject{
+    padding-top: 100px;
+}
+
+.NewProject__groups{
+    width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+}

@@ -6,7 +6,7 @@ class Header extends React.Component {
 
   render() {
 
-    if(this.props.info.display === "home"){
+    if(this.props.display === "register"){
       return (
         <div className="Header">
           <header>
@@ -16,9 +16,6 @@ class Header extends React.Component {
 
             <nav>
               <ul className="Header__nav">
-                <li className="Header__nav-item">
-                  <Link className="Header__nav-link" to="/register">Register</Link>
-                </li>
                 <li className="Header__nav-item"><Link className="Header__nav-link" to="/sign-in">Login</Link></li>
               </ul>
             </nav>
@@ -26,7 +23,7 @@ class Header extends React.Component {
         </div>
       )
     }
-    else if(this.props.info.display === 'sign-in'){
+    else if(this.props.display === 'sign-in'){
       return (
         <div className="Header">
           <header>
@@ -47,6 +44,7 @@ class Header extends React.Component {
             <h1 className="Header__logo"><Link className="logo-link" to="/">Quick AFM</Link></h1>
             <nav>
               <ul className="Header__nav">
+                <li className="Header__nav-item"><Link className="Header__nav-link" to="/register">Register</Link></li>
                 <li className="Header__nav-item"><Link className="Header__nav-link" to="/sign-in">Login</Link></li>
               </ul>
             </nav>

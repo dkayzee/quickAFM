@@ -17,6 +17,18 @@ const seed = async () => {
         name: 'epi'
     })
 
+    await Group.bulkCreate([
+        {
+            name: 'yes'
+        },
+        {
+            name: 'whatsup'
+        },
+        {
+            name: 'hoorah'
+        }
+    ])
+
     const phany = await Board.create({
         name: 'phany',
         groupId: 1

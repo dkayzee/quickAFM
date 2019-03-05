@@ -28,7 +28,7 @@ class PostIt extends React.Component {
             text: "work"
         }
 
-        axios.post('/PostIt', test)
+        axios.post('/postIt', test)
             .then(res => console.log(res.data))
     }
 

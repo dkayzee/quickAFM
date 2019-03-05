@@ -12,6 +12,24 @@ app.get('/', (req, res) => {
     res.send('Welcome to Quick AFM')
 })
 
+app.get('/board', async (req,res)=>{
+    try {
+        const board = await Board.findAll()
+        res.json(board)
+    } catch(e){
+        res.status(500).json({error: e.message})
+    }
+})
+
+app.get('/group', async (req,res)=>{
+    try{
+        const group = await Group.findAll()
+        res.json(group)
+    } catch(e){
+        res.status(500).json({error: e.message})
+    }
+})
+
 app.post('/postIt', async (req, res) => {
     try {
         console.log(req.body)

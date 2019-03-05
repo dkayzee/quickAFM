@@ -1,7 +1,5 @@
 import React from 'react'
 
-import Header from '../Header/Header'
-
 class SignIn extends React.Component {
    
     componentDidMount(){
@@ -10,7 +8,6 @@ class SignIn extends React.Component {
     render(){
         return(
             <div>
-                <Header info={this.props}/>
                 SignIn
             </div>
         )

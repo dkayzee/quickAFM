@@ -1,0 +1,12 @@
+.Dashboard{
+    padding-top: 100px;
+}
+
+.Dashboard__container{
+    display: flex;
+}
+
+.Dashboard__boards {
+    height: 500px;
+    width: 250px;
+}
