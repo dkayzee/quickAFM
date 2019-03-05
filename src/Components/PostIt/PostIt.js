@@ -1,25 +1,7 @@
 import React from 'react'
-import io from 'socket.io-client'
 import axios from 'axios'
 
 class PostIt extends React.Component {
-
-    state = {
-        user: 'daniel'
-    }
-    
-    componentDidMount(){
-        const socket = io()
-        console.log(socket)
-        socket.on("connect", ()=>{
-            console.log('connected to the socket')
-            socket.emit('user',{user: this.state.user})
-        })
-
-        socket.on('respond', (msg) => {
-            console.log(msg)
-        })
-    }
     
     post = () => {
 

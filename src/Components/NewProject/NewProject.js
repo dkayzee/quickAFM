@@ -6,7 +6,7 @@ import axios from 'axios'
 class NewProject extends React.Component{
     state = {
         groups : [],
-        selected: "",
+        selectedGroup: "",
         newGroup: false,
         submitted: false
     }
@@ -22,12 +22,12 @@ class NewProject extends React.Component{
 
     onGroupChange = (e) => {
         this.setState({
-            selected: e.currentTarget.value
+            selectedGroup: e.currentTarget.value
         })
     }
 
     onNewGroup = (e) => {
-        this.setState({selected: e.target.value})
+        this.setState({selectedGroup: e.target.value})
         this.setState({newGroup:true})
     }
 
@@ -46,7 +46,7 @@ class NewProject extends React.Component{
                         type="radio" 
                         value={group.name} 
                         onChange={this.onGroupChange}
-                        checked={this.state.selected === group.name}
+                        checked={this.state.selectedGroup === group.name}
                         name={group.name}
                     /> 
                     <label htmlFor={group.name}>{group.name}</label>
@@ -71,9 +71,9 @@ class NewProject extends React.Component{
                             <input 
                                 type="radio"
                                 onChange={this.onGroupChange}
-                                check={this.state.selected}
-                                value={this.state.selected}
-                                name={this.state.selected}
+                                check={this.state.selectedGroup}
+                                value={this.state.selectedGroup}
+                                name={this.state.selectedGroup}
                             />
                             <input type="text" onChange={this.onNewGroup} />
                             <button type="submit">Let's Go!</button>

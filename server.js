@@ -47,7 +47,7 @@ io.on('connection', (socket) => {
 
     socket.on('user', (msg) => {
         console.log(msg)
-        socket.emit('respond', {hello: 'welcome user'})
+        socket.emit('respond', `${msg} has connected`)
     })
     socket.on('disconnect', () => {
         console.log('A user disconnected')

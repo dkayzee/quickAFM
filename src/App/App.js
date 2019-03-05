@@ -13,7 +13,8 @@ import WhiteBoard from '../Components/WhiteBoard/WhiteBoard'
 class App extends Component {
   state = {
     loggedIn : false,
-    display : 'home'
+    display : 'home',
+    user : 'daniel'
   }
 
   changeDisplay = (display) => {
@@ -37,7 +38,9 @@ class App extends Component {
             }} />
             <Route path='/dashboard' component={Dashboard} />
             <Route path='/new-board' component={NewProject} />
-            <Route path='/whiteboard' component={WhiteBoard} />
+            <Route path='/whiteboard' exact render={props=>{
+              return <WhiteBoard user={this.state.user} />
+            }} />
           </Switch>
         </main>
       </div>
