@@ -37,6 +37,20 @@ class Header extends React.Component {
         </div>
       )
     }
+    else if(this.props.display === 'profile'){
+      return (
+        <div className="Header">
+          <header>
+            <h1 className="Header__logo"><Link className="logo-link" to="/">Quick AFM</Link></h1>
+            <nav>
+              <ul className="Header__nav">
+                <li className="Header__nav-item"><Link className="Header__nav-link" to="/profile">Profile</Link></li>
+              </ul>
+            </nav>
+          </header>
+        </div>
+      )
+    }
     else{
       return (
         <div className="Header">

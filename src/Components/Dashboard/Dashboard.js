@@ -15,6 +15,7 @@ class Dashboard extends React.Component {
 
     componentDidMount(){
         this.getBoard()
+        this.props.changeDisplay("profile")
     }
     render(){
         console.log(this.state.boards)

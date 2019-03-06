@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import './App.css';
 
+import axios from 'axios'
+
 import Home from '../Components/Home/Home'
 import SignIn from '../Components/SignIn/SignIn'
 import Register from '../Components/Register/Register'
@@ -14,9 +16,13 @@ class App extends Component {
   state = {
     loggedIn : false,
     display : 'home',
-    user : 'daniel',
+    user : null,
     selectedGroupId : '',
-    selectedGroup: ''
+    selectedGroup: '',
+    form: {
+      email: '',
+      password: ''
+    }
   }
 
   changeDisplay = (display) => {
@@ -31,6 +37,25 @@ class App extends Component {
     console.log(this.state.selectedGroup + this.state.selectedGroupId)
   }
 
+  onLoginChange = (e) => {
+    const name = e.target.name
+    const value = e.target.value
+    this.setState(prevState => {
+      prevState.form[name] = value
+      return prevState
+    })
+  }
+
+  onLoginSubmit = async(evt) => {
+    evt.preventDefault()
+    try {
+        const res = await axios.post('/users/login', this.state.form)
+        this.setState({loggedIn: res.data.loggedIn})
+    } catch(e){
+        console.log(e.message)
+    }
+}
+
   render() {
     return (
       <div className="App">
@@ -41,12 +66,19 @@ class App extends Component {
               return <Home changeDisplay={this.changeDisplay}/>
             }} />
             <Route path='/sign-in' exact render={props=>{
-              return <SignIn changeDisplay={this.changeDisplay}/>
+              return <SignIn 
+                changeDisplay={this.changeDisplay}
+                onFormChange={this.onLoginChange}
+                onFormSubmit={this.onLoginSubmit}
+                state={this.state}
+                />
             }} />
             <Route path='/register'  exact render={props=>{
               return <Register changeDisplay={this.changeDisplay}/>
             }} />
-            <Route path='/dashboard' component={Dashboard} />
+            <Route path='/dashboard' exact render={props=>{
+              return <Dashboard changeDisplay={this.changeDisplay} />
+            }}/>
             <Route path='/new-board' exact render={props=>{
               return <NewProject 
                 onGroupChange={this.onGroupChange}

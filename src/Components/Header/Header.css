@@ -21,7 +21,7 @@ header {
 .Header__logo {
   margin: 0;
   font-size: 2.5rem;
-  background: linear-gradient(#e66465, #9198e5);
+  font-family: 'Permanent Marker', cursive;
 }
 
 .Header__nav {
