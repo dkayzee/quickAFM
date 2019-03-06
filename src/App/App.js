@@ -14,11 +14,21 @@ class App extends Component {
   state = {
     loggedIn : false,
     display : 'home',
-    user : 'daniel'
+    user : 'daniel',
+    selectedGroupId : '',
+    selectedGroup: ''
   }
 
   changeDisplay = (display) => {
     this.setState({display})
+  }
+
+  onGroupChange = (e) => {
+    this.setState({
+      selectedGroupId: e.currentTarget.value,
+      selectedGroup: e.currentTarget.name
+    })
+    console.log(this.state.selectedGroup + this.state.selectedGroupId)
   }
 
   render() {
@@ -37,9 +47,17 @@ class App extends Component {
               return <Register changeDisplay={this.changeDisplay}/>
             }} />
             <Route path='/dashboard' component={Dashboard} />
-            <Route path='/new-board' component={NewProject} />
+            <Route path='/new-board' exact render={props=>{
+              return <NewProject 
+                onGroupChange={this.onGroupChange}
+                state={this.state}  
+              />
+            }} />
             <Route path='/whiteboard' exact render={props=>{
-              return <WhiteBoard user={this.state.user} />
+              return <WhiteBoard 
+                user={this.state.user}
+                group={this.state.selectedGroup}
+                groupId={this.state.selectedGroupId} />
             }} />
           </Switch>
         </main>

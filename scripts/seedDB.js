@@ -13,6 +13,13 @@ const seed = async () => {
         password: 'abc123'
     })
 
+    const bri = await User.create({
+        email: 'bri@an.com',
+        first_name: 'bri',
+        last_name: 'an',
+        password: 'abc123'
+    })
+
     const epi = await Group.create ({
         name: 'epi'
     })
@@ -35,6 +42,7 @@ const seed = async () => {
     })
 
     await dan.setGroups(epi)
+    await bri.setGroups(epi)
 
     process.exit()
 }

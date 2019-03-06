@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3001
 
 app.use(bodyParser.json())
 
-const {User, Group, Board, PostIt} = require ('./models')
+const {db, User, Group, Board, PostIt} = require ('./models')
 
 app.get('/', (req, res) => {
     res.send('Welcome to Quick AFM')
@@ -27,6 +27,19 @@ app.get('/group', async (req,res)=>{
         res.json(group)
     } catch(e){
         res.status(500).json({error: e.message})
+    }
+})
+
+app.get('/group/:id', async (req, res) => {
+    try {
+        const member = await Group.find({
+            where: {
+                id: req.params.id
+            }, include : [User]
+        })
+        res.json(member)
+    } catch(e){
+        console.log(e.message)
     }
 })
 

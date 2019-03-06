@@ -6,7 +6,6 @@ import axios from 'axios'
 class NewProject extends React.Component{
     state = {
         groups : [],
-        selectedGroup: "",
         newGroup: false,
         submitted: false
     }
@@ -20,14 +19,8 @@ class NewProject extends React.Component{
         this.getGroup()
     }
 
-    onGroupChange = (e) => {
-        this.setState({
-            selectedGroup: e.currentTarget.value
-        })
-    }
-
     onNewGroup = (e) => {
-        this.setState({selectedGroup: e.target.value})
+        this.props.onGroupChange()
         this.setState({newGroup:true})
     }
 
@@ -39,17 +32,17 @@ class NewProject extends React.Component{
     render(){
 
         const groupResults = this.state.groups.map((group, i) => {
-            console.log(group.name)
             return (
                 <div key={i}>  
                     <input 
                         type="radio" 
-                        value={group.name} 
-                        onChange={this.onGroupChange}
-                        checked={this.state.selectedGroup === group.name}
+                        value={group.id} 
+                        onChange={this.props.onGroupChange}
+                        checked={this.props.state.selectedGroup === group.name}
                         name={group.name}
+                        onClick={()=>{console.log(group.id)}}
                     /> 
-                    <label htmlFor={group.name}>{group.name}</label>
+                    <label htmlFor={group.id}>{group.name}</label>
                 </div>
             )
         })
@@ -70,10 +63,10 @@ class NewProject extends React.Component{
                             {groupResults}
                             <input 
                                 type="radio"
-                                onChange={this.onGroupChange}
-                                check={this.state.selectedGroup}
-                                value={this.state.selectedGroup}
-                                name={this.state.selectedGroup}
+                                onChange={this.props.onGroupChange}
+                                check={this.props.state.selectedGroup}
+                                value={this.props.state.selectedGroup}
+                                name={this.props.state.selectedGroup}
                             />
                             <input type="text" onChange={this.onNewGroup} />
                             <button type="submit">Let's Go!</button>
