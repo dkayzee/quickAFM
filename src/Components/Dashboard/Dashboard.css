@@ -4,9 +4,15 @@
 
 .Dashboard__container{
     display: flex;
+    flex-direction: row;
 }
 
 .Dashboard__boards {
-    height: 500px;
+    height: 250px;
     width: 250px;
+    border: solid #D3FFF3 1px;
+    margin: 5px;
+    text-align: center;
+    font-family: 'Permanent Marker', cursive;
+    background-color: #FFFFA5;
 }

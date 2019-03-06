@@ -24,7 +24,7 @@ class Dashboard extends React.Component {
         })
         return(
             <div className="Dashboard">
-                Dashboard
+                <h1>Dashboard</h1>
                 <div className="Dashboard__container">
                     <div className="Dashboard__boards"><Link to="/new-board">Start a New Board!</Link></div>
                     {boards}

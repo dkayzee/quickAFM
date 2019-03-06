@@ -42,7 +42,7 @@ class NewProject extends React.Component{
                         name={group.name}
                         onClick={()=>{console.log(group.id)}}
                     /> 
-                    <label htmlFor={group.id}>{group.name}</label>
+                    <label htmlFor={group.id} className="NewProject__label">{group.name}</label>
                 </div>
             )
         })
@@ -57,9 +57,10 @@ class NewProject extends React.Component{
         }
         return(
             <div className="NewProject">
-                NewProject!
+                <h1 className="NewProject__h1">New Project!</h1>
                 <div className='NewProject__groups'>
                         <form onSubmit={this.onGroupSubmit}>
+                            <h2>Select your group</h2>
                             {groupResults}
                             <input 
                                 type="radio"

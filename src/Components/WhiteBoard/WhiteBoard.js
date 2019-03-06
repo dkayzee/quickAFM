@@ -58,14 +58,20 @@ class WhiteBoard extends React.Component {
 
     render(){
 
+        console.log(this.props)
+
         const socket = io()
-        socket.emit('user', this.props.user)
+        socket.emit('user', '1')
 
         socket.on('respond', (msg) => {
-            console.log(this.state)
+            console.log(msg)
+            // if (msg.id === 2){
+            //     this.setState({allUsersConnected:true})
+            // }
+            this.setState({allUsersConnected:true})
         })
 
-        if(this.state.allUsersConnected && this.state.counter === 0){
+        if(this.state.allUsersConnected){
             return (
                 <div>
                     <PostIt />

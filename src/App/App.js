@@ -50,7 +50,7 @@ class App extends Component {
     evt.preventDefault()
     try {
         const res = await axios.post('/users/login', this.state.form)
-        this.setState({loggedIn: res.data.loggedIn})
+        this.setState({loggedIn: res.data.loggedIn, user:res.data.user})
     } catch(e){
         console.log(e.message)
     }
