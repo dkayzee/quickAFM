@@ -9,8 +9,8 @@ import axios from 'axios';
 class WhiteBoard extends React.Component {
 
     state = {
-        user: 'daniel',
-        allUsersConnected: false
+        allUsersConnected: false,
+        counter: 60
     }  
 
     getGroupMember = async () => {
@@ -19,9 +19,9 @@ class WhiteBoard extends React.Component {
                 const resp = await axios(`/group/${this.props.groupId}`)
                 console.log(resp.data)
                 const userInfo = await resp.data.users
-                const groupMembers = {}
+                const groupMembers = []
                 await userInfo.forEach((user)=>{
-                    groupMembers[user.id] = false
+                    groupMembers.push({userId:user.id, loggedIn:false})
                    
                 })
                 this.setState({groupMembers})
@@ -35,27 +35,59 @@ class WhiteBoard extends React.Component {
         }
     }
 
-    componentDidMount(){
+    toggleLoggedIn = (msg) => {
+        let copy = this.state.groupMembers
+        console.log(copy)
+        for(let i = 0; i < copy.length; i++){
+            if(this.state.groupMembers[i].userId === msg){
+                copy[i].loggedIn = true
+                this.setState({groupMembers:copy})
+            }
+        }
+    }
+
+    componentDidMount (){
         this.getGroupMember()
        
         const socket = io()
         console.log(socket)
         socket.on("connect", ()=>{
-            console.log('connected to the socket')
-            socket.emit('user', this.props.user)
-        })
-
-        socket.on('respond', (msg) => {
-            console.log(msg)
+            console.log('Successfully connected to the socket')
         })
     }
 
     render(){
-        return (
-            <div>
-                <PostIt />
-            </div>
-        )
+
+        const socket = io()
+        socket.emit('user', this.props.user)
+
+        socket.on('respond', (msg) => {
+            console.log(this.state)
+        })
+
+        if(this.state.allUsersConnected && this.state.counter === 0){
+            return (
+                <div>
+                    <PostIt />
+                </div>
+            )
+        }
+
+        if(this.state.allUsersConnected === false){
+            return (
+                <div>
+                    waiting for all users to connect!
+                </div>
+            )
+        }
+
+        else{
+            return (
+                <div>
+                    {this.state.counter}
+                </div>
+            )
+        }
     }
 }
 

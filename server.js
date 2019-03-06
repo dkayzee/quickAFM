@@ -2,6 +2,7 @@ const app = require('express')();
 const http = require('http').createServer(app)
 const io = require('socket.io')(http)
 const bodyParser = require('body-parser')
+// const bcrypt = require('bcrypt')
 const PORT = process.env.PORT || 3001
 
 app.use(bodyParser.json())
@@ -43,6 +44,33 @@ app.get('/group/:id', async (req, res) => {
     }
 })
 
+app.post('/users/login', async(req,res)=>{
+    const invalidMsg = 'Invalid email or password'
+    try {
+        const user = await User.findOne({
+            where: {
+                email: req.body.email
+            }
+        })
+        if (!user) {
+            return res.status(400).json({user: null, loggedIn: false})
+        }
+        const {first_name, last_name, email, id, password: hash} = user
+        // const match = await bcrypt.compare(req.body.password, hash)
+        // if (!match) {
+        //     return res.status(400).json({user: null, loggedIn: false})
+        // }
+        const userToSend = {
+            id: id,
+            email: email,
+            name: `${first_name} ${last_name}`
+        }
+        return res.json({user: userToSend, loggedIn: true})
+    } catch (e) {
+        res.status(500).json({message: e.message})
+    }
+})
+
 app.post('/postIt', async (req, res) => {
     try {
         console.log(req.body)
@@ -60,7 +88,7 @@ io.on('connection', (socket) => {
 
     socket.on('user', (msg) => {
         console.log(msg)
-        socket.emit('respond', `${msg} has connected`)
+        socket.emit('respond', msg)
     })
     socket.on('disconnect', () => {
         console.log('A user disconnected')

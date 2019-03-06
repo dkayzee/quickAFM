@@ -1,0 +1,27 @@
+.SignIn{
+    padding-top: 100px;
+    width: 100vw;
+}
+
+.Login__form{
+    margin: 25px auto;
+    padding: 25px;
+    width: 25vw;
+    display: flex;
+    flex-direction: column;
+    border: solid red 1px;
+    border-radius: 25px;
+}
+
+.Login__label {
+    font-size: 1.1rem;
+  }
+  
+  .Login__input {
+    font-size: 1rem;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+  }
+  
