@@ -1,9 +1,9 @@
 import React from 'react'
+import { Redirect } from 'react-router-dom'
 import './WhiteBoard.css'
 
 import io from 'socket.io-client'
 
-import PostIt from '../PostIt/PostIt'
 import axios from 'axios';
 
 class WhiteBoard extends React.Component {
@@ -54,46 +54,46 @@ class WhiteBoard extends React.Component {
         socket.on("connect", ()=>{
             console.log('Successfully connected to the socket')
         })
+        socket.emit('user', this.props.user.id)
+
+        socket.on('respond', (msg) => {
+            console.log(msg)
+            if (msg.id === 2){
+                this.setState({allUsersConnected:true})
+            }
+        })
     }
 
     render(){
 
         console.log(this.props)
 
-        const socket = io()
-        socket.emit('user', '1')
+        
 
-        socket.on('respond', (msg) => {
-            console.log(msg)
-            // if (msg.id === 2){
-            //     this.setState({allUsersConnected:true})
-            // }
-            this.setState({allUsersConnected:true})
-        })
-
-        if(this.state.allUsersConnected){
-            return (
-                <div>
-                    <PostIt />
-                </div>
-            )
-        }
+        // if(this.state.allUsersConnected){
+        //     return (
+        //         <div>
+        //             <PostIt />
+        //         </div>
+        //     )
+        // }
 
         if(this.state.allUsersConnected === false){
             return (
                 <div>
-                    waiting for all users to connect!
+                    {/* waiting for all users to connect! */}
+                    <Redirect to="/postIt" />
                 </div>
             )
         }
 
-        else{
-            return (
-                <div>
-                    {this.state.counter}
-                </div>
-            )
-        }
+        // else{
+        //     return (
+        //         <div>
+        //             {this.state.counter}
+        //         </div>
+        //     )
+        // }
     }
 }
 

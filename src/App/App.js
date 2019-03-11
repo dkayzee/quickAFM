@@ -11,6 +11,7 @@ import Header from '../Components/Header/Header';
 import Dashboard from '../Components/Dashboard/Dashboard'
 import NewProject from '../Components/NewProject/NewProject'
 import WhiteBoard from '../Components/WhiteBoard/WhiteBoard'
+import PostIt from '../Components/PostIt/PostIt'
 
 class App extends Component {
   state = {
@@ -91,6 +92,7 @@ class App extends Component {
                 group={this.state.selectedGroup}
                 groupId={this.state.selectedGroupId} />
             }} />
+            <Route path='/postIt' component={PostIt} />
           </Switch>
         </main>
       </div>

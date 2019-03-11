@@ -1,0 +1,10 @@
+.PostIt{
+    padding-top: 100px;
+    margin: 0 auto;
+}
+
+.PostIt__textarea{
+    background-color: #FFFFA5;
+    height: 250px;
+    width: 250px;
+}
